@@ -36,7 +36,7 @@ class PolygonsController extends Controller
         // Validate Request
         $request->validate(
             [
-                'name' => 'required|unique:points,name',
+                'name' => 'required|unique:polygon,name',
                 'description' => 'required',
                 'geom_polygon' => 'required'
             ],

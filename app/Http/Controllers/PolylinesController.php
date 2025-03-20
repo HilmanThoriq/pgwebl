@@ -35,7 +35,7 @@ class PolylinesController extends Controller
         // Validate Request
         $request->validate(
             [
-                'name' => 'required|unique:points,name',
+                'name' => 'required|unique:polyline,name',
                 'description' => 'required',
                 'geom_polyline' => 'required'
             ],
