@@ -22,16 +22,12 @@ class PointsController extends Controller
         ];
 
         return view('map', $data);
-
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -44,7 +40,8 @@ class PointsController extends Controller
             [
                 'name' => 'required|unique:points,name',
                 'description' => 'required',
-                'geom_point' => 'required'
+                'geom_point' => 'required',
+                'images' => 'nullable|mimes:jpeg,png,jpg|max:50'
             ],
             [
                 'name.required' => 'Name is required',
@@ -53,20 +50,37 @@ class PointsController extends Controller
                 'geom_point.required' => 'Geometry Point is required'
             ]
         );
+
+        // Check if directory exists, if not create it
+        if (!is_dir('storage/images')) {
+            mkdir('./storage/images', 0777);
+        }
+
+        // Check if file is uploaded
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_image = time() . "_point." . strtolower($image->getClientOriginalExtension());
+            $image->move('storage/images', $name_image);
+        } else {
+            $name_image = null;
+        }
+
         $data = [
             'geom' => $request->geom_point,
             'name' => $request->name,
-            'description' => $request->description
+            'description' => $request->description,
+            'images' => $name_image,
+            'photo' => $name_image
+
         ];
 
         // Create Data
-        if (!$this->points->create($data)){
+        if (!$this->points->create($data)) {
             return redirect()->route('map')->with('error', 'Point failed to add');
         }
 
         // Redirect to Map
         return redirect()->route('map')->with('success', 'Point has been added successfully');
-
     }
 
     /**

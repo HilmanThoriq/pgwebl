@@ -29,7 +29,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="POST" action="{{ route('points.store') }}">
+                <form method="POST" action="{{ route('points.store') }}" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
 
@@ -46,6 +46,15 @@
                         <div class="mb-3">
                             <label for="geom_point" class="form-label fw-semibold">Geometry</label>
                             <textarea class="form-control" id="geom_point" name="geom_point" rows="3"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label fw-semibold">Photo</label>
+                            <input type="file" class="form-control" id="image_point" name="image"
+                                onchange="document.getElementById('image-point-preview').src = window.URL.createObjectURL(this.files[0])">
+                            <div class="text-center my-3">
+                                <img src="" alt="" id="image-point-preview" class="img-thumbnail text-center" width="400">
+                            </div>
                         </div>
 
                     </div>
@@ -67,7 +76,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="POST" action="{{ route('polylines.store') }}">
+                <form method="POST" action="{{ route('polylines.store') }}" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
 
@@ -86,6 +95,15 @@
                             <textarea class="form-control" id="geom_polyline" name="geom_polyline" rows="3"></textarea>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="image" class="form-label fw-semibold">Photo</label>
+                            <input type="file" class="form-control" id="image_polyline" name="image"
+                                onchange="document.getElementById('image-polyline-preview').src = window.URL.createObjectURL(this.files[0])">
+                            <div class="text-center my-3">
+                                <img src="" alt="" id="image-polyline-preview" class="img-thumbnail text-center" width="400">
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -97,7 +115,8 @@
     </div>
 
     <!-- Modal Polygon -->
-    <div class="modal fade" id="CreatePolygonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="CreatePolygonModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -105,7 +124,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="POST" action="{{ route('polygons.store') }}">
+                <form method="POST" action="{{ route('polygons.store') }}" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
 
@@ -122,6 +141,15 @@
                         <div class="mb-3">
                             <label for="geom_polygon" class="form-label fw-semibold">Geometry</label>
                             <textarea class="form-control" id="geom_polygon" name="geom_polygon" rows="3"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label fw-semibold">Photo</label>
+                            <input type="file" class="form-control" id="image_polygon" name="image"
+                                onchange="document.getElementById('image-polygon-preview').src = window.URL.createObjectURL(this.files[0])">
+                            <div class="text-center my-3">
+                                <img src="" alt="" id="image-polygon-preview" class="img-thumbnail text-center" width="400">
+                            </div>
                         </div>
 
                     </div>
@@ -221,7 +249,8 @@
                 var popupContent = "Nama : " + feature.properties.name + "<br>" +
                     "Deskripsi : " + feature.properties.description + "<br>" +
                     "Koordinat : " + feature.geometry.coordinates + "<br>" +
-                    "Dibuat : " + feature.properties.created_at;
+                    "Dibuat : " + feature.properties.created_at + "<br>" +
+                    "<img src='{{ asset('storage/images') }}/" + feature.properties.images + "'width='200' alt=''>";
                 layer.on({
                     click: function(e) {
                         point.bindPopup(popupContent);
@@ -249,7 +278,11 @@
             },
             onEachFeature: function(feature, layer) {
                 var popupContent = "Kelas Jalan: " + feature.properties.name + "<br>" +
-                    "Panjang: " + feature.properties.length_km.toFixed(5) + " km";
+                    "Deskripsi: " + feature.properties.description + "<br>" +
+                    "Koordinat: " + feature.geometry.coordinates + "<br>" +
+                    "Dibuat: " + feature.properties.created_at + "<br>" +
+                    "Panjang: " + feature.properties.length_km.toFixed(5) + " km" + "<br>" +
+                    "<img src='{{ asset('storage/images') }}/" + feature.properties.images + "'width='200' alt=''>";;
                 layer.on({
                     click: function(e) {
                         polyline.bindPopup(popupContent);
@@ -282,7 +315,10 @@
             onEachFeature: function(feature, layer) {
                 var popupContent = "Nama : " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
-                    "Luas : " + feature.properties.area_hectare.toFixed(3)+ " Ha";
+                    "Koordinat: " + feature.geometry.coordinates + "<br>" +
+                    "Dibuat: " + feature.properties.created_at + "<br>" +
+                    "Luas : " + feature.properties.area_hectare.toFixed(3) + " Ha" + "<br>" +
+                    "<img src='{{ asset('storage/images') }}/" + feature.properties.images + "'width='200' alt=''>";
                 layer.on({
                     click: function(e) {
                         polygon.bindPopup(popupContent);
