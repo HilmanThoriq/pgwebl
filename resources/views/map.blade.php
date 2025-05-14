@@ -247,6 +247,9 @@
         var point = L.geoJson(null, {
             onEachFeature: function(feature, layer) {
 
+                var routeedit = "{{ route('points.edit', ':id') }}";
+                routeedit = routeedit.replace(':id', feature.properties.id);
+
                 var routedelete = "{{ route('points.destroy', ':id') }}";
                 routedelete = routedelete.replace(':id', feature.properties.id);
 
@@ -255,9 +258,18 @@
                     "Geometry: " + feature.geometry.coordinates + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.images +
                     "' width='200'alt=''>" + "<br>" +
-                    "<form method='POST' action='" + routedelete + "'>" + '@csrf' + '@method("DELETE")' +
-                    "<button type='submit' class='btn btn-danger btn-sm' onclick='return confirm(`Yakin akan dihapus?`)'><i class='fa-solid fa-trash-can'></i></button>" +
-                    "</form>";
+                    "<div class='row text-center mt-4'>" +
+                        // Button Edit Data
+                        "<div class='col-6 px-1'>" +
+                            "<a href='" + routeedit + "' class='btn btn-warning btn-sm text-white d-block w-100'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                        "</div>" +
+                        // Button Delete Data
+                        "<div class='col-6 px-1'>" +
+                            "<form method='POST' action='" + routedelete + "'>" + '@csrf' + '@method("DELETE")' +
+                                "<button type='submit' class='btn btn-danger btn-sm d-block w-100' onclick='return confirm(`Yakin akan dihapus?`)'><i class='fa-solid fa-trash-can'></i></button>" +
+                            "</form>" +
+                        "</div>" +
+                    "</div>";
 
                 layer.on({
                     click: function(e) {
@@ -286,6 +298,9 @@
             },
             onEachFeature: function(feature, layer) {
 
+                var routeedit = "{{ route('polylines.edit', ':id') }}";
+                routeedit = routeedit.replace(':id', feature.properties.id);
+
                 var routedelete = "{{ route('polylines.destroy', ':id') }}";
                 routedelete = routedelete.replace(':id', feature.properties.id);
 
@@ -295,9 +310,18 @@
                     "Dibuat: " + feature.properties.created_at + "<br>" +
                     "Panjang: " + feature.properties.length_km.toFixed(5) + " km" + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.images + "'width='200' alt=''>" + "<br>" +
-                    "<form method='POST' action='" + routedelete + "'>" + '@csrf' + '@method("DELETE")' +
-                    "<button type='submit' class='btn btn-danger btn-sm' onclick='return confirm(`Yakin akan dihapus?`)'><i class='fa-solid fa-trash-can'></i></button>" +
-                    "</form>";
+                    "<div class='row text-center mt-4'>" +
+                        // Button Edit Data
+                        "<div class='col-6 px-1'>" +
+                            "<a href='" + routeedit + "' class='btn btn-warning btn-sm text-white d-block w-100'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                        "</div>" +
+                        // Button Delete Data
+                        "<div class='col-6 px-1'>" +
+                            "<form method='POST' action='" + routedelete + "'>" + '@csrf' + '@method("DELETE")' +
+                                "<button type='submit' class='btn btn-danger btn-sm d-block w-100' onclick='return confirm(`Yakin akan dihapus?`)'><i class='fa-solid fa-trash-can'></i></button>" +
+                            "</form>" +
+                        "</div>" +
+                    "</div>";
                 layer.on({
                     click: function(e) {
                         polyline.bindPopup(popupContent);
@@ -329,6 +353,9 @@
             },
             onEachFeature: function(feature, layer) {
 
+                var routeedit = "{{ route('polygons.edit', ':id') }}";
+                routeedit = routeedit.replace(':id', feature.properties.id);
+
                 var routedelete = "{{ route('polygons.destroy', ':id') }}";
                 routedelete = routedelete.replace(':id', feature.properties.id);
 
@@ -338,9 +365,18 @@
                     "Dibuat: " + feature.properties.created_at + "<br>" +
                     "Luas : " + feature.properties.area_hectare.toFixed(3) + " Ha" + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.images + "'width='200' alt=''>" + "<br>" +
-                    "<form method='POST' action='" + routedelete + "'>" + '@csrf' + '@method("DELETE")' +
-                    "<button type='submit' class='btn btn-danger btn-sm' onclick='return confirm(`Yakin akan dihapus?`)'><i class='fa-solid fa-trash-can'></i></button>" +
-                    "</form>";
+                    "<div class='row text-center mt-4'>" +
+                        // Button Edit Data
+                        "<div class='col-6 px-1'>" +
+                            "<a href='" + routeedit + "' class='btn btn-warning btn-sm text-white d-block w-100'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                        "</div>" +
+                        // Button Delete Data
+                        "<div class='col-6 px-1'>" +
+                            "<form method='POST' action='" + routedelete + "'>" + '@csrf' + '@method("DELETE")' +
+                                "<button type='submit' class='btn btn-danger btn-sm d-block w-100' onclick='return confirm(`Yakin akan dihapus?`)'><i class='fa-solid fa-trash-can'></i></button>" +
+                            "</form>" +
+                        "</div>" +
+                    "</div>";
 
                 layer.on({
                     click: function(e) {

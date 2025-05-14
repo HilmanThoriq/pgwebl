@@ -92,7 +92,12 @@ class PolylinesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = [
+            'title' => 'Edit Polyline',
+            'id' => $id
+        ];
+
+        return view('edit-polyline', $data);
     }
 
     /**
