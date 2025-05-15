@@ -122,10 +122,10 @@
                 $('#name').val(properties.name);
                 $('#description').val(properties.description);
                 $('#geom_polyline').val(objectGeometry);
-                $('#image-point-preview').attr('src', +"{{ asset('storage/images') }}/" + properties.image);
-                $('#image-point-preview').attr('alt', properties.image);
-                $('#image-point-preview').attr('width', 400);
-                $('#image-point-preview').attr('height', 300);
+                $('#image-polyline-preview').attr('src', "{{ asset('storage/images') }}/" + properties.images);
+                $('#image-polyline-preview').attr('alt', properties.images);
+                $('#image-polyline-preview').attr('width', 400);
+                $('#image-polyline-preview').attr('height', 300);
 
                 // Show modal edit point
                 $('#EditPolylineModal').modal('show');
@@ -159,11 +159,11 @@
                         $('#name').val(properties.name);
                         $('#description').val(properties.description);
                         $('#geom_polyline').val(objectGeometry);
-                        $('#image-point-preview').attr('src', +"{{ asset('storage/images') }}/" +
-                            properties.image);
-                        $('#image-point-preview').attr('alt', properties.image);
-                        $('#image-point-preview').attr('width', 400);
-                        $('#image-point-preview').attr('height', 300);
+                        $('#image-polyline-preview').attr('src', "{{ asset('storage/images') }}/" +
+                            properties.images);
+                        $('#image-polyline-preview').attr('alt', properties.images);
+                        $('#image-polyline-preview').attr('width', 400);
+                        $('#image-polyline-preview').attr('height', 300);
 
                         // Show modal edit polyline
                         $('#EditPolylineModal').modal('show');

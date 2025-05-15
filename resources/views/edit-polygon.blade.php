@@ -122,10 +122,10 @@
                 $('#name').val(properties.name);
                 $('#description').val(properties.description);
                 $('#geom_polygon').val(objectGeometry);
-                $('#image-point-preview').attr('src', +"{{ asset('storage/images') }}/" + properties.image);
-                $('#image-point-preview').attr('alt', properties.image);
-                $('#image-point-preview').attr('width', 400);
-                $('#image-point-preview').attr('height', 300);
+                $('#image-polygon-preview').attr('src', "{{ asset('storage/images') }}/" + properties.images);
+                $('#image-polygon-preview').attr('alt', properties.images);
+                $('#image-polygon-preview').attr('width', 400);
+                $('#image-polygon-preview').attr('height', 300);
 
                 // Show modal edit point
                 $('#EditPolygonModal').modal('show');
@@ -161,11 +161,11 @@
                         $('#name').val(properties.name);
                         $('#description').val(properties.description);
                         $('#geom_polygon').val(objectGeometry);
-                        $('#image-point-preview').attr('src', +"{{ asset('storage/images') }}/" +
-                            properties.image);
-                        $('#image-point-preview').attr('alt', properties.image);
-                        $('#image-point-preview').attr('width', 400);
-                        $('#image-point-preview').attr('height', 300);
+                        $('#image-polygon-preview').attr('src', "{{ asset('storage/images') }}/" +
+                            properties.images);
+                        $('#image-polygon-preview').attr('alt', properties.images);
+                        $('#image-polygon-preview').attr('width', 400);
+                        $('#image-polygon-preview').attr('height', 300);
 
                         // Show modal edit polygon
                         $('#EditPolygonModal').modal('show');

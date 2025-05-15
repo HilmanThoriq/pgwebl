@@ -53,7 +53,7 @@
                             <input type="file" class="form-control" id="image_point" name="image"
                                 onchange="document.getElementById('image-point-preview').src = window.URL.createObjectURL(this.files[0])">
                             <div class="text-center my-3">
-                                <img src="" alt="" id="image-point-preview"
+                                <img alt="" id="image-point-preview"
                                     class="img-thumbnail text-center" width="400">
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                 $('#name').val(properties.name);
                 $('#description').val(properties.description);
                 $('#geom_point').val(objectGeometry);
-                $('#image-point-preview').attr('src', +"{{ asset('storage/images') }}/" + properties.image);
+                $('#image-point-preview').attr('src', "{{ asset('storage/images') }}/" + properties.image);
                 $('#image-point-preview').attr('alt', properties.image);
                 $('#image-point-preview').attr('width', 400);
                 $('#image-point-preview').attr('height', 300);
@@ -151,9 +151,9 @@
                         $('#name').val(properties.name);
                         $('#description').val(properties.description);
                         $('#geom_point').val(objectGeometry);
-                        $('#image-point-preview').attr('src', +"{{ asset('storage/images') }}/" +
-                            properties.image);
-                        $('#image-point-preview').attr('alt', properties.image);
+                        $('#image-point-preview').attr('src', "{{ asset('storage/images') }}/" +
+                            properties.images);
+                        $('#image-point-preview').attr('alt', properties.images);
                         $('#image-point-preview').attr('width', 400);
                         $('#image-point-preview').attr('height', 300);
 
