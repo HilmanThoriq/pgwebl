@@ -25,14 +25,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create Polyline</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Polyline</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="POST" action="{{ route('polylines.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('polylines.update', $id) }}" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
-
+                        @method('PATCH')
                         <div class="mb-3">
                             <label for="name" class="form-label fw-semibold">Name</label>
                             <input type="text" class="form-control" id="name" name="name"

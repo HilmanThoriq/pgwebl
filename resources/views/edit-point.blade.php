@@ -25,14 +25,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create Point</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Point</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="POST" action="{{ route('points.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('points.update', $id) }}" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
+                        @method('PATCH')
 
+                        <input type="hidden" name="id" id="id" value="{{ $id }}">
                         <div class="mb-3">
                             <label for="name" class="form-label fw-semibold">Name</label>
                             <input type="text" class="form-control" id="name" name="name"
@@ -61,7 +63,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary">Edit Data</button>
                     </div>
                 </form>
             </div>
