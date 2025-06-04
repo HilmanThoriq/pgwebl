@@ -72,8 +72,8 @@ class PointsController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'images' => $name_image,
-            'photo' => $name_image
-
+            'photo' => $name_image,
+            'user_id' => auth()->user()->id
         ];
 
         // Create Data

@@ -255,6 +255,7 @@
 
                 var popupContent = "Nama: " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
+                    "Dibuat Oleh: " + feature.properties.user_created + "<br>" +
                     "Geometry: " + feature.geometry.coordinates + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.images +
                     "' width='200'alt=''>" + "<br>" +
@@ -307,6 +308,7 @@
                 var popupContent = "Kelas Jalan: " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
                     "Koordinat: " + feature.geometry.coordinates + "<br>" +
+                    "Dibuat Oleh: " + feature.properties.user_created + "<br>" +
                     "Dibuat: " + feature.properties.created_at + "<br>" +
                     "Panjang: " + feature.properties.length_km.toFixed(5) + " km" + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.images + "'width='200' alt=''>" + "<br>" +
@@ -362,6 +364,7 @@
                 var popupContent = "Nama : " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
                     "Koordinat: " + feature.geometry.coordinates + "<br>" +
+                    "Dibuat Oleh: " + feature.properties.user_created + "<br>" +
                     "Dibuat: " + feature.properties.created_at + "<br>" +
                     "Luas : " + feature.properties.area_hectare.toFixed(3) + " Ha" + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.images + "'width='200' alt=''>" + "<br>" +
